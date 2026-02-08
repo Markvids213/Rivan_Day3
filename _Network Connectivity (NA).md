@@ -1503,10 +1503,10 @@ conf t
 ~~~
 !@R4
 conf t
- router ___  __
-  router-id __.__.__.__
-  network __.__.__.__  __.__.__.__ area __
-  network __.__.__.__  __.__.__.__ area __
+ router ospf 1
+  router-id 4.4.4.4
+  network 10.1.1.8  0.0.0.3 area 0
+  network 4.4.4.4  0.0.0.0 area 0
   end
 ~~~
 
@@ -1591,16 +1591,8 @@ conf t
 ### OSPF Interface-specific network advertisement.
 ~~~
 !@R1
-conf t
- router ospf 1
-  router-id 1.1.1.1
-  exit
- int lo1
-  ip ospf 1 area 0
-  exit
- int e1/0
-  ip ospf 1 area 0
-  end
+
+
 ~~~
 
 &nbsp;
@@ -1807,6 +1799,14 @@ show ip ospf neighbor
 
 ---
 &nbsp;
+
+
+
+
+
+
+
+
 
 ### OSPF Network Types and Priorities.
 ### 🎯 Excercise 14: Ensure R3 is the DR for all its connected networks by completing the following tasks:
@@ -2165,7 +2165,7 @@ Steps to summarize routes for OSPF
 !@R2
 conf t
  router ospf 1
-  area 12 range 10.10.8.0 255.255.252.0
+ area 12 range 10.10.0.0 255.255.240.0
   end
 ~~~
 
@@ -2280,7 +2280,7 @@ conf t
 !@R2
 conf t
  router ospf 1
-  area 12 range 10.10.0.0 255.255.192.0
+  area 12 range 10.10.32.0 255.255.252.0
   end
 ~~~
 
@@ -2524,10 +2524,7 @@ show bgp summary
 ### BGP - OSPF Redistribution (Default Route Propagation)
 ~~~
 !@R1
-conf t
- router ospf 1
-  default-information originate always
-  end
+
 ~~~
 
 <br>
@@ -2578,6 +2575,9 @@ INSIDE GLOBAL     INSIDE LOCAL         OUTSIDE LOCAL      OUTSIDE GLOBAL
 ~~~
 
 <br>
+
+
+
 <br>
 
 Step 1: Define INSIDE and OUTSIDE
